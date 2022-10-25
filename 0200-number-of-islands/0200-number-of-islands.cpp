@@ -3,9 +3,6 @@ class Solution {
     private :
     
     void bfs(int i , int j , vector<vector<bool>> &visited , vector<vector<char>> &grid){
-        
-                          int m = grid.size();
-                          int n = grid[0].size();
                         queue<pair<int,int>> q;
                         visited[i][j] = 1;
                         pair<int,int> p;
@@ -13,9 +10,10 @@ class Solution {
                         p.second = j;
                         q.push(p);
                     
-        int dx[] = {-1,+1,0,0};
-        int dy[] = {0,0,+1,-1};
-        
+            int dx[] = {-1,+1,0,0};
+            int dy[] = {0,0,+1,-1};
+     int m = grid.size();
+                          int n = grid[0].size();
                         while(!q.empty()){
                             
                            int row  = q.front().first;
@@ -40,6 +38,33 @@ class Solution {
                             
                         }
     }
+    
+
+    void dfs(int i , int j , vector<vector<bool>> &visited , vector<vector<char>> &grid){
+        
+        visited[i][j] = 1;
+          int dx[] = {-1,+1,0,0};
+            int dy[] = {0,0,+1,-1};
+             int m = grid.size();
+                          int n = grid[0].size();
+                            for(int k = 0 ;k < 4;  k++){
+                                  int  neighRow = i + dx[k];
+                                  int  neighCol = j + dy[k];
+                                    
+                                      if(neighRow >=0 && neighRow < m
+                                      && neighCol >=0 && neighCol < n
+                                      && !visited[neighRow][neighCol]
+                                      && grid[neighRow][neighCol] == '1'
+                                      ){
+                                        // cout<<neighRow<<" "<<neighCol<<endl;
+                                        visited[neighRow][neighCol] = 1;
+                                          dfs(neighRow , neighCol,visited,grid);
+                                    }
+                                }
+                            
+        
+        
+    }
 public:
     int numIslands(vector<vector<char>>& grid) {
             
@@ -52,7 +77,7 @@ public:
             for(int j = 0; j < n ; j++){
                 if(!visited[i][j] &&  grid[i][j] == '1'){   
                     // it means that this is my starting point
-                    bfs(i,j,visited,grid);  
+                    dfs(i,j,visited,grid);  
                    ans++;
                 }
             }
