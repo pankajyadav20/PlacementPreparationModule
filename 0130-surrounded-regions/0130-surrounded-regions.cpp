@@ -17,7 +17,6 @@ public:
                 if(board[i][j]=='O' && isBorder(i,j,n,m)){
 					q.push(make_pair(i,j));  
                     vis[i][j] = 1;
-                    // cout<<i<<" "<<j<<endl;
                 }
             }
         }
@@ -36,10 +35,11 @@ public:
                         int i = row + dx[k];
                         int j = col + dy[k];
                     
-                   if(j >= 0 && j < m && i >= 0 && i < n && !vis[i][j] && board[i][j] == 'O'){
-                    vis[i][j] = true;
-                    q.push({i, j});
-                }
+                    if(i >= 0 && i < n  && j >= 0 && j < m && !vis[i][j] && board[i][j] == 'O'){
+                        q.push({i,j});
+                        vis[i][j] = 1;
+                        // cout<<"hi"<<endl;
+                    }
                     
                 }
         }
