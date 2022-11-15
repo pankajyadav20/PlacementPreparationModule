@@ -10,14 +10,11 @@
  * };
  */
 class Solution {
-    private:
-    int fun(TreeNode *root){
-        if(root == NULL) return 0;
-        if(root->left == NULL && root->right  == NULL) return 1;
-        return  1 + fun(root->left) + fun(root->right);
-    }
 public:
     int countNodes(TreeNode* root) {
-        return fun(root);
+        if(root == NULL) return 0;
+        if(root->left == NULL && root->right  == NULL) return 1;
+        return  1 + countNodes(root->left) + countNodes(root->right);
+        
     }
 };
