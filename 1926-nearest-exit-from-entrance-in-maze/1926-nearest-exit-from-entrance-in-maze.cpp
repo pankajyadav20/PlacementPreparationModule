@@ -8,7 +8,7 @@ public:
             if(i == startI && j == startJ){
                 return false;
             }
-            if((i == 0 || j == 0 || i == n - 1 || j == m - 1) && ( maze[i][j] != '+') ){
+            if((i == 0 || j == 0 || i == n - 1 || j == m - 1) && ( maze[i][j] == '.') ){
                 return true;
             }
         return false;
@@ -41,7 +41,7 @@ public:
                 for(int k = 0 ; k < 4 ; k++){
                         int i = row + dx[k];
                         int j = col + dy[k];
-                    if(isValid(i, j , n , m) && !vis[i][j] && maze[i][j] != '+'){
+                    if(isValid(i, j , n , m) && !vis[i][j] && maze[i][j] == '.'){
                         q.push({{i , j} , steps +  1});
                         vis[i][j] = 1;
                     }
