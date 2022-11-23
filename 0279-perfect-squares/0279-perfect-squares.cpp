@@ -1,19 +1,20 @@
 class Solution {
 public:
-      int fun(int ind, int cap, vector<int>& arr , vector<vector<int>> &dp){
-        if(ind == 0){
-            if((cap % arr[ind]) == 0)  
-                return cap / arr[ind];
+    int fun(int idx , int cap, vector<int> &arr , vector<vector<int>> &dp){
+        if(idx == 0){
+            if(cap % arr[idx] == 0)  
+                return cap / arr[idx];
             else return 1e9;
         } 
-        if(dp[ind][cap] != -1){
-            return dp[ind][cap];
+        if(dp[idx][cap] != -1){
+            return dp[idx][cap];
         }
-        int take = INT_MAX;
-            if(arr[ind] <= cap)
-             take = 1 + fun(ind, cap - arr[ind] ,arr , dp);
-         int notTake =  fun(ind - 1 , cap , arr , dp);
-        return dp[ind][cap] = min(take , notTake);
+        int notTake = 0 + fun(idx - 1 , cap , arr , dp);
+        int take = 1e9 ;
+            if(arr[idx] <= cap){
+             take = 1 + fun(idx, cap - arr[idx] ,arr , dp);
+            }
+        return dp[idx][cap] = min(take , notTake);
 
     }
     int numSquares(int n) {
