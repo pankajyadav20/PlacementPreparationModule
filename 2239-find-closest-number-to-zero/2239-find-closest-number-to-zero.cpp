@@ -1,12 +1,16 @@
 class Solution {
 public:
-    int findClosestNumber(vector<int>& A) {
-        int diff = INT_MAX, ans = INT_MAX;
-        for (int n : A) {
-            if (abs(n) < diff || (abs(n) == diff && n > ans)) {
-                diff = abs(n);
-                ans = n;
-            } 
+    int findClosestNumber(vector<int>& nums) {
+        
+        int mini = abs(nums[0]);
+        for(int i  = 0 ; i < nums.size() ; i++){
+            mini = min ( mini , abs(nums[i]));
+        }
+        int ans = -1e9;
+        for(auto it : nums){
+            if(abs(it) == mini){
+                ans = max(it , ans);
+            }
         }
         return ans;
     }
