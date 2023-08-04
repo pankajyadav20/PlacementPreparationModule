@@ -1,2 +1,1 @@
-# leetcodePush
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+Name : Geetesh Yadav, Roll No : 2000290130072 , Section - B , Semester - 7th 
